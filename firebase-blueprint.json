@@ -1,0 +1,52 @@
+{
+  "entities": {
+    "Room": {
+      "title": "Room",
+      "description": "A game room for Bunker",
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "enum": ["lobby", "playing", "ended"] },
+        "phase": { "type": "string", "enum": ["lobby", "playing", "defense", "discussion", "voting", "ended"] },
+        "catastrophe": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" },
+            "description": { "type": "string" }
+          }
+        },
+        "hostId": { "type": "string" },
+        "currentRound": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "activeSpeakerId": { "type": "string" },
+        "phaseEndTime": { "type": "string", "format": "date-time" },
+        "discussionEndVotes": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["status", "hostId"]
+    },
+    "Player": {
+      "title": "Player",
+      "description": "A player in a game room",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "characteristics": { "type": "object" },
+        "isAlive": { "type": "boolean" },
+        "votes": { "type": "integer" },
+        "isMuted": { "type": "boolean" },
+        "isTalking": { "type": "boolean" }
+      },
+      "required": ["uid", "name", "isAlive"]
+    }
+  },
+  "firestore": {
+    "/rooms/{roomId}": {
+      "schema": "Room",
+      "description": "Game room data"
+    },
+    "/rooms/{roomId}/players/{playerId}": {
+      "schema": "Player",
+      "description": "Player data within a room"
+    }
+  }
+}

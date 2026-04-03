@@ -1,0 +1,5 @@
+{
+  "name": "BUNKER: Survival Protocol",
+  "description": "Dunyo tugadi. Faqat eng loyiqlar bunkerga kirish huquqiga ega bo'ladi. O'z xususiyatlaringizni isbotlang va omon qoling.",
+  "requestFramePermissions": ["microphone"]
+}
