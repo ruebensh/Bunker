@@ -8,7 +8,7 @@ let firebaseConfig: any = null;
 
 try {
   // @ts-ignore
-  const localConfig = await import('../firebase-applet-config.json');
+  const localConfig = await import(/* @vite-ignore */ '../firebase-applet-config.json');
   const config = localConfig.default || localConfig;
   if (config && config.apiKey && config.apiKey.trim() !== "") {
     firebaseConfig = config;
